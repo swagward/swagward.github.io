@@ -6,10 +6,38 @@ const ctx = canvas.getContext("2d");
 let width = canvas.width = window.innerWidth;
 let height = canvas.height = window.innerHeight;
 
+// --- Theme Management ---
+const toggleBtn = document.getElementById("theme-toggle");
+const icon = toggleBtn?.querySelector("i");
+
+// Initialize theme from local storage
+const savedTheme = localStorage.getItem("theme") || "dark";
+document.documentElement.setAttribute("data-theme", savedTheme);
+updateIcon(savedTheme);
+
+toggleBtn?.addEventListener("click", () => {
+    const currentTheme = document.documentElement.getAttribute("data-theme");
+    const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+    document.documentElement.setAttribute("data-theme", newTheme);
+    localStorage.setItem("theme", newTheme);
+    updateIcon(newTheme);
+});
+
+function updateIcon(theme) {
+    if (!icon) return;
+    icon.className = theme === "dark" ? "fas fa-moon" : "fas fa-sun";
+}
+
+// Helper to get dynamic colors from CSS variables for the canvas
+function getRGBValue() {
+    return getComputedStyle(document.documentElement).getPropertyValue('--particle-color').trim();
+}
+
+// --- Particle Logic ---
 window.addEventListener("resize", () => {
     const newWidth = window.innerWidth;
     const newHeight = window.innerHeight;
-
     const scaleX = newWidth / width;
     const scaleY = newHeight / height;
 
@@ -34,7 +62,6 @@ function initParticles() {
         particles.push({
             x: rand(0, width),
             y: rand(0, height),
-            //slower, constant speed
             vx: rand(-0.3, 0.3),
             vy: rand(-0.3, 0.3),
             phase: rand(0, Math.PI * 2)
@@ -43,16 +70,15 @@ function initParticles() {
 }
 initParticles();
 
-function updateAndDraw(time) {
+function updateAndDraw() {
     ctx.clearRect(0, 0, width, height);
+    const currentColor = getRGBValue(); // Dynamic black or white
 
-    //make particles float around
     particles.forEach(p => {
         p.x += p.vx;
         p.y += p.vy;
         p.phase += 0.005;
 
-        //bounce off window walls
         if (p.x < 0 || p.x > width) p.vx *= -1;
         if (p.y < 0 || p.y > height) p.vy *= -1;
     });
@@ -63,7 +89,6 @@ function updateAndDraw(time) {
     const delaunay = Delaunay.from(pointsArray);
     const triangles = delaunay.triangles;
 
-    //draw triangles based on particles
     ctx.lineJoin = "round";
 
     for (let i = 0; i < triangles.length; i += 3) {
@@ -82,23 +107,24 @@ function updateAndDraw(time) {
         ctx.lineTo(p2.x, p2.y);
         ctx.closePath();
 
-        //adjust shades of grey
         const avgPhase = (p0.phase + p1.phase + p2.phase) / 3;
-        const brightness = 100 + 50 * Math.sin(avgPhase);
+        // Invert brightness logic slightly for light mode so triangles aren't too dark
+        const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+        const baseBright = isDark ? 100 : 200;
+        const brightness = baseBright + 50 * Math.sin(avgPhase);
 
-        ctx.fillStyle = `rgba(${brightness}, ${brightness}, ${brightness}, 0.25)`;
-        ctx.strokeStyle = `rgba(${brightness}, ${brightness}, ${brightness}, 0.1)`;
+        ctx.fillStyle = `rgba(${brightness}, ${brightness}, ${brightness}, 0.15)`;
+        ctx.strokeStyle = `rgba(${currentColor}, 0.05)`;
         ctx.fill();
         ctx.stroke();
     }
 
-    //draw connections
     for (let i = 0; i < particles.length; i++) {
         const p1 = particles[i];
 
         ctx.beginPath();
         ctx.arc(p1.x, p1.y, 2, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+        ctx.fillStyle = `rgba(${currentColor}, 0.5)`;
         ctx.fill();
 
         for (let j = i + 1; j < particles.length; j++) {
@@ -108,7 +134,7 @@ function updateAndDraw(time) {
             const dist = Math.sqrt(dx * dx + dy * dy);
 
             if (dist < MAX_DIST) {
-                ctx.strokeStyle = `rgba(255, 255, 255, ${0.3 * (1 - dist / MAX_DIST)})`;
+                ctx.strokeStyle = `rgba(${currentColor}, ${0.2 * (1 - dist / MAX_DIST)})`;
                 ctx.lineWidth = 1;
                 ctx.beginPath();
                 ctx.moveTo(p1.x, p1.y);
