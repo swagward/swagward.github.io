@@ -6,16 +6,17 @@ const ctx = canvas.getContext("2d");
 let width = canvas.width = window.innerWidth;
 let height = canvas.height = window.innerHeight;
 
-// --- Theme Management ---
+//light/dark theme
 const toggleBtn = document.getElementById("theme-toggle");
 const icon = toggleBtn?.querySelector("i");
 
-// Initialize theme from local storage
+//get theme from local storage
 const savedTheme = localStorage.getItem("theme") || "dark";
 document.documentElement.setAttribute("data-theme", savedTheme);
 updateIcon(savedTheme);
 
-toggleBtn?.addEventListener("click", () => {
+toggleBtn?.addEventListener("click", () =>
+{
     const currentTheme = document.documentElement.getAttribute("data-theme");
     const newTheme = currentTheme === "dark" ? "light" : "dark";
 
@@ -24,24 +25,27 @@ toggleBtn?.addEventListener("click", () => {
     updateIcon(newTheme);
 });
 
-function updateIcon(theme) {
+function updateIcon(theme)
+{
     if (!icon) return;
     icon.className = theme === "dark" ? "fas fa-moon" : "fas fa-sun";
 }
 
-// Helper to get dynamic colors from CSS variables for the canvas
-function getRGBValue() {
+function getRGBValue()
+{
     return getComputedStyle(document.documentElement).getPropertyValue('--particle-color').trim();
 }
 
-// --- Particle Logic ---
-window.addEventListener("resize", () => {
+//particle logic
+window.addEventListener("resize", () =>
+{
     const newWidth = window.innerWidth;
     const newHeight = window.innerHeight;
     const scaleX = newWidth / width;
     const scaleY = newHeight / height;
 
-    particles.forEach(p => {
+    particles.forEach(p =>
+    {
         p.x *= scaleX;
         p.y *= scaleY;
     });
@@ -54,11 +58,16 @@ let particles = [];
 const PARTICLE_COUNT = 60;
 const MAX_DIST = 150;
 
-function rand(min, max) { return Math.random() * (max - min) + min; }
+function rand(min, max)
+{
+    return Math.random() * (max - min) + min;
+}
 
-function initParticles() {
+function initParticles()
+{
     particles = [];
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
+    for (let i = 0; i < PARTICLE_COUNT; i++)
+    {
         particles.push({
             x: rand(0, width),
             y: rand(0, height),
@@ -70,11 +79,13 @@ function initParticles() {
 }
 initParticles();
 
-function updateAndDraw() {
+function updateAndDraw()
+{
     ctx.clearRect(0, 0, width, height);
-    const currentColor = getRGBValue(); // Dynamic black or white
+    const currentColor = getRGBValue(); //dynamic black or white
 
-    particles.forEach(p => {
+    particles.forEach(p =>
+    {
         p.x += p.vx;
         p.y += p.vy;
         p.phase += 0.005;
@@ -83,18 +94,20 @@ function updateAndDraw() {
         if (p.y < 0 || p.y > height) p.vy *= -1;
     });
 
-    const pointsArray = particles.map(p => [p.x, p.y]);
-    pointsArray.push([0, 0], [width, 0], [width, height], [0, height]);
+    const allPoints = particles.map(p => [p.x, p.y]);
+    allPoints.push([0, 0], [width, 0], [width, height], [0, height]);
 
-    const delaunay = Delaunay.from(pointsArray);
+    const delaunay = Delaunay.from(allPoints);
     const triangles = delaunay.triangles;
 
     ctx.lineJoin = "round";
 
-    for (let i = 0; i < triangles.length; i += 3) {
-        const getPoint = (index) => {
+    for (let i = 0; i < triangles.length; i += 3)
+    {
+        const getPoint = (index) =>
+        {
             if (index < particles.length) return particles[index];
-            return { x: pointsArray[index][0], y: pointsArray[index][1], phase: 0 };
+            return { x: allPoints[index][0], y: allPoints[index][1], phase: 0 };
         };
 
         const p0 = getPoint(triangles[i]);
@@ -108,7 +121,7 @@ function updateAndDraw() {
         ctx.closePath();
 
         const avgPhase = (p0.phase + p1.phase + p2.phase) / 3;
-        // Invert brightness logic slightly for light mode so triangles aren't too dark
+        //invert brightness slightly on light mode (so points arent too dark)
         const isDark = document.documentElement.getAttribute("data-theme") === "dark";
         const baseBright = isDark ? 100 : 200;
         const brightness = baseBright + 50 * Math.sin(avgPhase);
@@ -119,7 +132,8 @@ function updateAndDraw() {
         ctx.stroke();
     }
 
-    for (let i = 0; i < particles.length; i++) {
+    for (let i = 0; i < particles.length; i++)
+    {
         const p1 = particles[i];
 
         ctx.beginPath();
@@ -127,13 +141,15 @@ function updateAndDraw() {
         ctx.fillStyle = `rgba(${currentColor}, 0.5)`;
         ctx.fill();
 
-        for (let j = i + 1; j < particles.length; j++) {
+        for (let j = i + 1; j < particles.length; j++)
+        {
             const p2 = particles[j];
             const dx = p1.x - p2.x;
             const dy = p1.y - p2.y;
             const dist = Math.sqrt(dx * dx + dy * dy);
 
-            if (dist < MAX_DIST) {
+            if (dist < MAX_DIST)
+            {
                 ctx.strokeStyle = `rgba(${currentColor}, ${0.2 * (1 - dist / MAX_DIST)})`;
                 ctx.lineWidth = 1;
                 ctx.beginPath();

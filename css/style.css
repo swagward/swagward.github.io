@@ -1,4 +1,5 @@
-:root {
+:root
+{
     --bg-color: #0e0e0e;
     --text-color: #eaeaea;
     --accent: #ffffff;
@@ -8,7 +9,8 @@
     --particle-color: 255, 255, 255;
 }
 
-[data-theme="light"] {
+[data-theme="light"]
+{
     --bg-color: #f0f0f0;
     --text-color: #1a1a1a;
     --accent: #000000;
@@ -22,7 +24,8 @@
 .hero .subtitle { color: var(--card-text); }
 input, textarea { background: var(--glass-bg); color: var(--text-color); }
 
-body {
+body
+{
     margin: 0;
     font-family: 'Segoe UI', system-ui, sans-serif;
     color: var(--text-color);
@@ -30,23 +33,26 @@ body {
     overflow-x: hidden;
 }
 
-a {
+a
+{
     text-decoration: none;
     color: inherit;
     transition: 0.2s ease;
 }
 
-/* --- canvas bg --- */
-#bg {
+/* canvas bg */
+#bg
+{
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -1; /*appear behind everything else */
+    z-index: -1; /* appear behind everything else */
 }
 
-nav {
+nav
+{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -55,13 +61,15 @@ nav {
     border-bottom: 1px solid var(--border-color);
 }
 
-nav .logo {
+nav .logo
+{
     font-weight: 700;
     font-size: 1.2rem;
     letter-spacing: 1px;
 }
 
-nav ul {
+nav ul
+{
     list-style: none;
     display: flex;
     gap: 2rem;
@@ -69,13 +77,15 @@ nav ul {
     padding: 0;
 }
 
-nav a:hover {
+nav a:hover
+{
     color: var(--accent);
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
 }
 
-/* --- landing page --- */
-.hero {
+/* landing page */
+.hero
+{
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -84,21 +94,24 @@ nav a:hover {
     text-align: center;
 }
 
-.hero h1 {
+.hero h1
+{
     font-size: 4rem;
     margin: 0 0 0.5rem 0;
     letter-spacing: -2px;
 }
 
-.hero .subtitle {
+.hero .subtitle
+{
     font-size: 1.2rem;
     color: #888;
     margin-bottom: 2rem;
     font-family: monospace;
 }
 
-/* --- buttons --- */
-.btn {
+/* buttons */
+.btn
+{
     display: inline-block;
     padding: 0.8rem 2rem;
     border: 1px solid var(--text-color);
@@ -108,72 +121,85 @@ nav a:hover {
     margin: 0 10px;
 }
 
-.btn:hover {
+.btn:hover
+{
     background: var(--text-color);
     color: var(--bg-color);
 }
 
-/* --- logo --- */
-nav .logo a {
+/* logo */
+nav .logo a
+{
     display: flex;
     align-items: center;
 }
 
-.nav-icon {
+.nav-icon
+{
     width: auto;
     display: block;
     transition: filter 0.3s ease, transform 0.3s ease;
 }
 
 /* glow/lift effect on hover */
-nav .logo a:hover .nav-icon {
+nav .logo a:hover .nav-icon
+{
     transform: scale(1.05);
 }
 
-.hero-logo {
+.hero-logo
+{
     height: auto;
     margin-bottom: 1rem;
     animation: fadeInDown 1s ease-out;
 }
 
-.nav-icon {
+.nav-icon
+{
     width: auto;
     vertical-align: middle;
     transition: transform 0.3s ease;
 }
 
-@keyframes fadeInDown {
-    from {
+@keyframes fadeInDown
+{
+    from
+    {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(-80px);
     }
-    to {
+    to
+    {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-/* --- projects --- */
-.container {
+/* projects */
+.container
+{
     max-width: 1200px;
     margin: 0 auto;
     padding: 4rem 2rem;
 }
 
-.section-title {
+.section-title
+{
     font-size: 2rem;
     margin-bottom: 2rem;
     border-left: 4px solid var(--text-color);
     padding-left: 1rem;
 }
 
-.project-grid {
+.project-grid
+{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
 }
 
-.card {
+.card
+{
     background: var(--glass-bg);
     border: 1px solid var(--border-color);
     padding: 2rem;
@@ -181,7 +207,8 @@ nav .logo a:hover .nav-icon {
     transition: transform 0.2s;
 }
 
-.card:hover {
+.card:hover
+{
     transform: translateY(-5px);
     border-color: rgba(255, 255, 255, 0.3);
 }
@@ -189,14 +216,16 @@ nav .logo a:hover .nav-icon {
 .card h3 { margin-top: 0; }
 .card p { color: #aaa; line-height: 1.5; }
 
-.tags {
+.tags
+{
     margin-top: 1rem;
     display: flex;
     gap: 0.5rem;
     flex-wrap: wrap;
 }
 
-.tag {
+.tag
+{
     font-size: 0.75rem;
     background: rgba(255,255,255,0.1);
     padding: 0.2rem 0.6rem;
@@ -204,8 +233,9 @@ nav .logo a:hover .nav-icon {
     font-family: monospace;
 }
 
-/* --- contact form --- */
-.contact-wrapper {
+/* contact form */
+.contact-wrapper
+{
     max-width: 600px;
     margin: 0 auto;
     background: var(--glass-bg);
@@ -214,18 +244,21 @@ nav .logo a:hover .nav-icon {
     backdrop-filter: blur(5px);
 }
 
-.form-group {
+.form-group
+{
     margin-bottom: 1.5rem;
 }
 
-.form-group label {
+.form-group label
+{
     display: block;
     margin-bottom: 0.5rem;
     font-size: 0.9rem;
     color: #ccc;
 }
 
-input, textarea {
+input, textarea
+{
     width: 100%;
     padding: 10px;
     background: rgba(0, 0, 0, 0.3);
@@ -235,12 +268,14 @@ input, textarea {
     box-sizing: border-box;
 }
 
-input:focus, textarea:focus {
+input:focus, textarea:focus
+{
     outline: none;
     border-color: white;
 }
 
-.contact-wrapper.split {
+.contact-wrapper.split
+{
     max-width: 900px;
     display: grid;
     grid-template-columns: 1fr 1.2fr;
@@ -249,13 +284,15 @@ input:focus, textarea:focus {
     align-items: start;
 }
 
-.social-links {
+.social-links
+{
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.social-btn {
+.social-btn
+{
     display: flex;
     align-items: center;
     gap: 15px;
@@ -266,11 +303,13 @@ input:focus, textarea:focus {
     transition: 0.3s ease;
 }
 
-.social-btn i {
+.social-btn i
+{
     font-size: 1.2rem;
 }
 
-.social-btn:hover {
+.social-btn:hover
+{
     background: rgba(255, 255, 255, 0.1);
     transform: translateX(10px);
     border-color: var(--accent);
@@ -281,29 +320,33 @@ input:focus, textarea:focus {
 .social-btn.instagram:hover { color: #E1306C; }
 .social-btn.github:hover { color: #6e5494; }
 
-.submit-btn {
+.submit-btn
+{
     width: 100%;
-    margin: 0;
-    margin-top: 1rem;
+    margin: 1rem 0 0;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: #ccc;
 }
 
-@media (max-width: 768px) {
-    .contact-wrapper.split {
+@media (max-width: 768px)
+{
+    .contact-wrapper.split
+    {
         grid-template-columns: 1fr;
         gap: 2rem;
         padding: 2rem;
     }
 
-    .contact-left {
+    .contact-left
+    {
         order: 2;
     }
 }
 
-/* --- light/dark theme --- */
-.theme-btn {
+/* light/dark theme */
+.theme-btn
+{
     background: none;
     border: none;
     color: var(--text-color);
@@ -314,4 +357,5 @@ input:focus, textarea:focus {
     align-items: center;
     transition: transform 0.3s ease;
 }
+
 .theme-btn:hover { transform: scale(1.2); }
