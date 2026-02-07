@@ -258,49 +258,6 @@ nav .logo a:hover .nav-icon
     font-family: monospace;
 }
 
-.dev-status
-{
-    margin: 2rem 0;
-    background: rgba(0, 0, 0, 0.4);
-    border: 1px solid var(--border-color);
-    padding: 1rem 1.5rem;
-    font-family: 'Consolas', 'Monaco', monospace;
-    font-size: 0.9rem;
-    border-radius: 4px;
-    position: relative;
-    overflow: hidden;
-}
-
-.status-header
-{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #6e5494;
-    margin-bottom: 0.5rem;
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-#github-activity
-{
-    color: var(--text-color);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.dev-status::after {
-    content: " ";
-    position: absolute;
-    top: 0; left: 0; bottom: 0; right: 0;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%),
-    linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
-    background-size: 100% 2px, 3px 100%;
-    pointer-events: none;
-}
-
 /* contact form */
 .contact-wrapper
 {
