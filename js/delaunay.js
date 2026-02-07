@@ -7,28 +7,51 @@ let width = canvas.width = window.innerWidth;
 let height = canvas.height = window.innerHeight;
 
 //light/dark theme
-const toggleBtn = document.getElementById("theme-toggle");
-const icon = toggleBtn?.querySelector("i");
+const themeBtn = document.getElementById("theme-toggle");
+const themeIcon = themeBtn?.querySelector("i");
+
+//pause state
+const pauseBtn = document.getElementById("pause-toggle");
+const pauseIcon = pauseBtn?.querySelector("i");
+let isPaused = localStorage.getItem("bg-paused") === "true"; //want effect on by default
 
 //get theme from local storage
 const savedTheme = localStorage.getItem("theme") || "dark";
 document.documentElement.setAttribute("data-theme", savedTheme);
-updateIcon(savedTheme);
+updateThemeIcon(savedTheme);
+updatePauseIcon();
 
-toggleBtn?.addEventListener("click", () =>
+themeBtn?.addEventListener("click", () =>
 {
     const currentTheme = document.documentElement.getAttribute("data-theme");
     const newTheme = currentTheme === "dark" ? "light" : "dark";
 
     document.documentElement.setAttribute("data-theme", newTheme);
     localStorage.setItem("theme", newTheme);
-    updateIcon(newTheme);
+    updateThemeIcon(newTheme);
+
+    if(isPaused)
+        draw();
 });
 
-function updateIcon(theme)
+pauseBtn?.addEventListener("click", () => {
+    isPaused = !isPaused;
+    localStorage.setItem("bg-paused", isPaused);
+
+    updatePauseIcon();
+    if(!isPaused) updateAndDraw();
+});
+
+function updateThemeIcon(theme)
 {
-    if (!icon) return;
-    icon.className = theme === "dark" ? "fas fa-moon" : "fas fa-sun";
+    if (!themeIcon) return;
+    themeIcon.className = theme === "dark" ? "fas fa-moon" : "fas fa-sun";
+}
+
+function updatePauseIcon()
+{
+    if(!pauseIcon) return;
+    pauseIcon.className = isPaused ? "fas fa-play" : "fas fa-pause";
 }
 
 function getRGBValue()
@@ -52,6 +75,9 @@ window.addEventListener("resize", () =>
 
     width = canvas.width = newWidth;
     height = canvas.height = newHeight;
+
+    if(isPaused)
+        draw();
 });
 
 let particles = [];
@@ -79,20 +105,10 @@ function initParticles()
 }
 initParticles();
 
-function updateAndDraw()
+function draw()
 {
     ctx.clearRect(0, 0, width, height);
     const currentColor = getRGBValue(); //dynamic black or white
-
-    particles.forEach(p =>
-    {
-        p.x += p.vx;
-        p.y += p.vy;
-        p.phase += 0.005;
-
-        if (p.x < 0 || p.x > width) p.vx *= -1;
-        if (p.y < 0 || p.y > height) p.vy *= -1;
-    });
 
     const allPoints = particles.map(p => [p.x, p.y]);
     allPoints.push([0, 0], [width, 0], [width, height], [0, height]);
@@ -159,8 +175,27 @@ function updateAndDraw()
             }
         }
     }
+}
 
+function updateAndDraw()
+{
+    if(isPaused) return;
+
+    particles.forEach(p =>
+    {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.phase += 0.005;
+
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
+    });
+
+    draw();
     requestAnimationFrame(updateAndDraw);
 }
 
-updateAndDraw();
+if(isPaused)
+    draw();
+else
+    updateAndDraw();
