@@ -362,7 +362,7 @@ input:focus, textarea:focus
 .social-btn.discord:hover { color: #5865F2; }
 .social-btn.youtube:hover { color: #FF0000; }
 .social-btn.instagram:hover { color: #E1306C; }
-/*.social-btn.github:hover { color: #6e5494; }*/
+.social-btn.github:hover { color: #6e5494; }
 
 .submit-btn
 {
