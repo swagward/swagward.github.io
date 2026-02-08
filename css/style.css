@@ -234,28 +234,47 @@ nav .logo a:hover .nav-icon
 
 .card:hover
 {
-    transform: translateY(-5px);
-    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-10px);
+    border-color: var(--accent);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.card:hover .project-icon
+{
+    opacity: 1;
+    color: var(--accent);
+}
+
+.card-content
+{
+    flex: 1;
+    padding-right: 20px;
+}
+
+.project-icon
+{
+    font-size: 1.5rem;
+    color: var(--card-text);
+    opacity: 0.5;
+    transition: 0.3s;
 }
 
 .card h3 { margin-top: 0; }
 .card p { color: #aaa; line-height: 1.5; }
 
-.tags
-{
-    margin-top: 1rem;
+.tags {
     display: flex;
     gap: 0.5rem;
     flex-wrap: wrap;
+    margin-top: 1rem;
 }
 
-.tag
-{
-    font-size: 0.75rem;
-    background: rgba(255,255,255,0.1);
-    padding: 0.2rem 0.6rem;
+.tag {
+    font-size: 0.7rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 3px 8px;
     border-radius: 4px;
-    font-family: monospace;
+    color: var(--accent);
 }
 
 /* contact form */

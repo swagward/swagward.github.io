@@ -1,0 +1,99 @@
+.game-page {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-color); /* Match portfolio background */
+}
+
+#bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.game-wrapper {
+    position: relative;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+#game-container {
+    width: 1072px;
+    height: 720px;
+    border: 2px solid var(--border-color);
+    background: #000;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    overflow: hidden;
+}
+
+#game-container canvas {
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-color);
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+#sidebar {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%); /* Center vertically */
+    width: 260px;
+    z-index: 10;
+}
+
+#sidebar.minimized {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    padding: 10px;
+}
+
+#sidebar.minimized .sidebar-content {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.control-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+}
+
+.control-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.6rem;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+kbd {
+    background: var(--accent);
+    color: #000;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    font-size: 0.75rem;
+    box-shadow: 0 2px 0 rgba(0,0,0,0.2);
+    min-width: 25px;
+    text-align: center;
+}
+
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crystal Defenders | Swagward</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/game.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="game-page">
+
+<canvas id="bg"></canvas>
+
+<nav>
+    <div class="logo">
+        <a href="index.html">
+            <img src="assets/logo.png" alt="Logo" class="nav-icon">
+        </a>
+    </div>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li>
+            <div class="nav-controls">
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button id="pause-toggle" class="theme-btn" aria-label="Pause Background">
+                    <i class="fas fa-pause"></i>
+                </button>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+<main class="game-wrapper">
+    <div id="game-container"></div>
+
+    <aside id="sidebar" class="glass-card">
+        <button id="toggle-sidebar" class="icon-btn"><i class="fas fa-info-circle"></i></button>
+
+        <div class="sidebar-content">
+            <h3>Movement</h3>
+            <ul class="control-list">
+                <li><span>Move</span> <kbd>WASD</kbd></li>
+                <li><span>Sprint</span> <kbd>SHIFT</kbd></li>
+            </ul>
+
+            <h3>Combat</h3>
+            <ul class="control-list">
+                <li><span>Shoot</span> <kbd>LMB</kbd></li>
+            </ul>
+
+            <h3>Inventory</h3>
+            <ul class="control-list">
+                <li><span>Switch Left</span> <kbd>Q</kbd></li>
+                <li><span>Switch Right</span> <kbd>E</kbd></li>
+            </ul>
+
+            <hr class="divider">
+
+            <h3>Mission</h3>
+            <p>Defend the crystal from the zombie horde. Rounds scale in difficulty, so keep an eye on your ammo.</p>
+
+            <div class="status-msg">
+                <i class="fas fa-terminal"></i> Check console for debug logs.
+            </div>
+        </div>
+    </aside>
+</main>
+
+<script src="js/crystaldefenders/libs/phaser.min.js"></script>
+<script src="js/crystaldefenders/libs/easyStar-0.4.4.min.js"></script>
+<script type="module" src="js/delaunay.js"></script>
+<script type="module" src="js/crystaldefenders/game.js"></script>
+<script>
+    const btn = document.getElementById('toggle-sidebar');
+    const sidebar = document.getElementById('sidebar');
+    btn.onclick = () => sidebar.classList.toggle('minimized');
+</script>
+</body>
+</html>
