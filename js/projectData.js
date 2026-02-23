@@ -18,7 +18,7 @@ export const projects =
         grade: "B- (62/100)",
         role: "Solo Developer",
         description: "A endless fast-paced tower defense game built in Unreal Engine 5, inspired Dungeon Defenders.",
-        images: ["", "", ""],
+        images: ["assets/campsiege/campsiege1.png", "assets/campsiege/campsiege2.png"],
         website: "https://github.com/swagward/Camp-Siege",
         video: null
     },
@@ -29,8 +29,30 @@ export const projects =
         grade: "A (76/100)",
         role: "Solo Developer",
         description: "Similar to Camp Siege, but made in JavaScript with Phaser to play in browsers.",
-        images: ["", "", ""],
+        images: ["assets/crystaldefenders/crystaldefenders1.png", "assets/crystaldefenders/crystaldefenders2.png"],
         website: "game.html",
         video: null
     },
+    "fnan":
+    {
+        title: "Five Nights at Naughtys",
+        subtitle: "Group Hobby Project",
+        grade: "N/A",
+        role: "Primary Programmer",
+        description: "A group project inspired by Five Nights at Freddy's. I was responsible for the core AI logic, security camera systems, and game state management within Unity.",
+        images: ["assets/fnan/fnan1.gif", "assets/fnan/fnan2.png", "assets/fnan/fnan3.png"],
+        website: "https://naughty-corner-games.itch.io/five-nights-at-naughtys",
+        video: "https://www.youtube.com/embed/R-ZTeeAXC9o"
+    },
+    "swagaria-multiplayer":
+    {
+        title: "Swagaria Multiplayer",
+        subtitle: "Cross-Language Networking Project",
+        grade: "A* (95/100)",
+        role: "Solo Developer",
+        description: "A complex technical remake of Swagaria featuring authoritative server control. Built using C++ for high-performance client-side rendering and Java for the backend server to manage world state and player synchronization.",
+        images: [],
+        website: "https://github.com/swagward/SwagariaMultiplayer",
+        video: "https://www.youtube.com/embed/ezAafmcUHzs"
+    }
 }
