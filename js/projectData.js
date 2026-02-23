@@ -12,14 +12,25 @@ export const projects =
         video: null
     },
     "camp-siege":
+    {
+        title: "Camp Siege",
+        subtitle: "Fast Paced Tower Defense",
+        grade: "B- (62/100)",
+        role: "Solo Developer",
+        description: "A endless fast-paced tower defense game built in Unreal Engine 5, inspired Dungeon Defenders.",
+        images: ["", "", ""],
+        website: "https://github.com/swagward/Camp-Siege",
+        video: null
+    },
+    "crystal-defenders":
         {
-            title: "Camp Siege",
+            title: "Crystal Defenders",
             subtitle: "Fast Paced Tower Defense",
-            grade: "B-",
+            grade: "A (76/100)",
             role: "Solo Developer",
-            description: "A endless fast-paced tower defense game built in Unreal Engine 5, inspired Dungeon Defenders.",
+            description: "Similar to Camp Siege, but made in JavaScript with Phaser to play in browsers.",
             images: ["", "", ""],
-            website: "https://github.com/swagward/Camp-Siege",
+            website: "game.html",
             video: null
         },
 }
