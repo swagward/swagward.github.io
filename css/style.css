@@ -417,25 +417,30 @@ nav .logo a:hover .nav-icon
 {
     display: block;
     margin-bottom: 0.5rem;
-    color: #fff;
+    color: var(--text-color);
     font-weight: 500;
+    transition: color 0.3s ease;
+
 }
 
 input, textarea
 {
     width: 100%;
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.3);
+    padding: 12px;
+    background: var(--glass-bg);
     border: 1px solid var(--border-color);
-    color: white;
+    color: var(--text-color);
     font-family: inherit;
     box-sizing: border-box;
+    resize: none;
+
 }
 
 input:focus, textarea:focus
 {
     outline: none;
-    border-color: white;
+    border-color: var(--accent);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .contact-wrapper.split
@@ -461,10 +466,10 @@ input:focus, textarea:focus
     align-items: center;
     gap: 15px;
     padding: 1rem;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--glass-bg);
     border: 1px solid var(--border-color);
+    color: var(--text-color);
     font-weight: 600;
-    transition: 0.3s ease;
 }
 
 .social-btn i
@@ -490,7 +495,9 @@ input:focus, textarea:focus
     margin: 1rem 0 0;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #ccc;
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+    transition: all 0.3s ease;
 }
 
 @media (max-width: 768px)
@@ -522,4 +529,8 @@ input:focus, textarea:focus
     transition: transform 0.3s ease;
 }
 
-.theme-btn:hover { transform: scale(1.2); }
+.submit-btn:hover
+{
+    background: var(--text-color);
+    color: var(--bg-color);
+}
