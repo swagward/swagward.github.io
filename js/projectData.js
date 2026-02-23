@@ -4,10 +4,10 @@ export const projects =
     {
         title: "Swagaria",
         subtitle: "Unity 2D Sandbox Game",
-        grade: "N/A (Personal Project)",
+        grade: "Level 2 Distinction (College Final)",
         role: "Solo Developer",
         description: "A Unity-based 2D sandbox game inspired by Terraria, focusing on cleanly designed architectures and optimisation.",
-        images: ["", "", ""],
+        images: ["assets/swagaria/swagaria1.png", "assets/swagaria/swagaria2.png", "assets/swagaria/swagaria3.gif"],
         website: "https://github.com/swagward/Swagaria-v4",
         video: null
     },
@@ -23,14 +23,14 @@ export const projects =
         video: null
     },
     "crystal-defenders":
-        {
-            title: "Crystal Defenders",
-            subtitle: "Fast Paced Tower Defense",
-            grade: "A (76/100)",
-            role: "Solo Developer",
-            description: "Similar to Camp Siege, but made in JavaScript with Phaser to play in browsers.",
-            images: ["", "", ""],
-            website: "game.html",
-            video: null
-        },
+    {
+        title: "Crystal Defenders",
+        subtitle: "Fast Paced Tower Defense",
+        grade: "A (76/100)",
+        role: "Solo Developer",
+        description: "Similar to Camp Siege, but made in JavaScript with Phaser to play in browsers.",
+        images: ["", "", ""],
+        website: "game.html",
+        video: null
+    },
 }
