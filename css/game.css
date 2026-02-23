@@ -1,21 +1,24 @@
-.game-page {
+.game-page
+{
     margin: 0;
     padding: 0;
     overflow: hidden;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: var(--bg-color); /* Match portfolio background */
+    background-color: var(--bg-color);
 }
 
-#bg {
+#bg
+{
     position: fixed;
     top: 0;
     left: 0;
     z-index: -1;
 }
 
-.game-wrapper {
+.game-wrapper
+{
     position: relative;
     flex: 1;
     display: flex;
@@ -24,51 +27,60 @@
     z-index: 1;
 }
 
-#game-container {
+#game-container
+{
     width: 1072px;
     height: 720px;
-    border: 2px solid var(--border-color);
+    border: none;
     background: #000;
     box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-    overflow: hidden;
+    position: relative;
+    overflow: visible;
+    display: flex;
 }
 
-#game-container canvas {
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
-    border: 1px solid var(--border-color);
+#game-container canvas
+{
+    box-shadow: none !important;
+    border: none !important;
     display: block;
     width: 100% !important;
     height: 100% !important;
 }
 
-#sidebar {
+#sidebar
+{
     position: absolute;
     right: 40px;
     top: 50%;
-    transform: translateY(-50%); /* Center vertically */
+    transform: translateY(-50%);
     width: 260px;
     z-index: 10;
 }
 
-#sidebar.minimized {
+#sidebar.minimized
+{
     width: 50px;
     height: 50px;
     overflow: hidden;
     padding: 10px;
 }
 
-#sidebar.minimized .sidebar-content {
+#sidebar.minimized .sidebar-content
+{
     opacity: 0;
     pointer-events: none;
 }
 
-.control-list {
+.control-list
+{
     list-style: none;
     padding: 0;
     margin: 0 0 1.5rem 0;
 }
 
-.control-list li {
+.control-list li
+{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -78,9 +90,10 @@
     opacity: 0.9;
 }
 
-kbd {
-    background: var(--accent);
-    color: #000;
+kbd
+{
+    background: var(--text-color);
+    color: var(--bg-color);
     padding: 2px 8px;
     border-radius: 4px;
     font-family: 'Courier New', monospace;
@@ -91,7 +104,8 @@ kbd {
     text-align: center;
 }
 
-.glass-card {
+.glass-card
+{
     background: var(--glass-bg);
     backdrop-filter: blur(10px);
     border: 1px solid var(--border-color);
