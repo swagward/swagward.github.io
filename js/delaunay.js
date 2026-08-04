@@ -6,16 +6,13 @@ const ctx = canvas.getContext("2d");
 let width = canvas.width = window.innerWidth;
 let height = canvas.height = window.innerHeight;
 
-//light/dark theme
 const themeBtn = document.getElementById("theme-toggle");
 const themeIcon = themeBtn?.querySelector("i");
 
-//pause state
 const pauseBtn = document.getElementById("pause-toggle");
 const pauseIcon = pauseBtn?.querySelector("i");
 let isPaused = localStorage.getItem("bg-paused") === "true"; //want effect on by default
 
-//get theme from local storage
 const savedTheme = localStorage.getItem("theme") || "dark";
 document.documentElement.setAttribute("data-theme", savedTheme);
 updateThemeIcon(savedTheme);
