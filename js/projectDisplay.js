@@ -6,13 +6,30 @@ const project = projects[projectId];
 
 if (project)
 {
-    document.title = `${project.title} | Swagward`;
+    document.title = `${project.title} | Alex Pannell`;
+
+    const metaDescription = document.querySelector('meta[name="description"]') ?? (() =>
+    {
+        const tag = document.createElement('meta');
+        tag.name = 'description';
+        document.head.appendChild(tag);
+        return tag;
+    })();
+    metaDescription.content = project.description;
+
     document.getElementById('p-title').innerText = project.title;
     document.getElementById('p-subtitle').innerText = project.subtitle;
     document.getElementById('p-description').innerText = project.description;
     document.getElementById('p-role').innerText = project.role;
     document.getElementById('p-grade').innerText = project.grade;
-    document.getElementById('p-link').href = project.website;
+
+    const sourceLink = document.getElementById('p-link');
+    sourceLink.href = project.website;
+    if (project.website.startsWith('http'))
+    {
+        sourceLink.target = '_blank';
+        sourceLink.rel = 'noopener noreferrer';
+    }
 
     const mediaBox = document.getElementById('media-container');
     const allMedia = [];
@@ -32,31 +49,30 @@ if (project)
         const galleryHTML = `
             <div class="gallery-container">
                 <div class="carousel-viewport">
-                    ${allMedia.length > 1 ? `<button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>` : ''}
+                    ${allMedia.length > 1 ? `<button class="carousel-btn prev-btn" aria-label="Previous media"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>` : ''}
                     
-                    ${allMedia.map((item, i) => 
-                    {
-                        if (item.type === 'video') {
-                            return `<div class="carousel-image ${i === 0 ? 'active' : ''}" id="media-${i}" style="width:100%; height:100%;">
-                                                    <iframe width="100%" height="100%" src="${item.src}" frameborder="0" allowfullscreen style="border-radius: 12px;"></iframe>
+                    ${allMedia.map((item, i) =>
+        {
+            if (item.type === 'video') {
+                return `<div class="carousel-image ${i === 0 ? 'active' : ''}" id="media-${i}" style="width:100%; height:100%;">
+                                                    <iframe width="100%" height="100%" src="${item.src}" title="${project.title} demo video" frameborder="0" allowfullscreen style="border-radius: 12px;"></iframe>
                                                 </div>`;
-                        } 
-                        else
-                            return `<img src="${item.src}" class="carousel-image ${i === 0 ? 'active' : ''}" id="media-${i}">`;
-                    }).join('')}
+            }
+            else
+                return `<img src="${item.src}" class="carousel-image ${i === 0 ? 'active' : ''}" id="media-${i}" alt="${project.title} screenshot ${i + 1}">`;
+        }).join('')}
 
-                    ${allMedia.length > 1 ? `<button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>` : ''}
+                    ${allMedia.length > 1 ? `<button class="carousel-btn next-btn" aria-label="Next media"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>` : ''}
                 </div>
                 
                 <div class="carousel-dots">
-                    ${allMedia.length > 1 ? allMedia.map((_, i) => `<div class="dot ${i === 0 ? 'active' : ''}" id="dot-${i}"></div>`).join('') : ''}
+                    ${allMedia.length > 1 ? allMedia.map((_, i) => `<button class="dot ${i === 0 ? 'active' : ''}" id="dot-${i}" aria-label="Go to media ${i + 1}"></button>`).join('') : ''}
                 </div>
             </div>
         `;
 
         mediaBox.innerHTML = galleryHTML;
 
-        // Carousel Logic
         const mediaElements = mediaBox.querySelectorAll('.carousel-image');
         const dots = mediaBox.querySelectorAll('.dot');
 

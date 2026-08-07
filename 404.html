@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Details | Alex Pannell</title>
+    <title>Page Not Found | Alex Pannell</title>
+    <meta name="description" content="This page doesn't exist. Return to the homepage.">
+    <meta name="robots" content="noindex">
     <link rel="icon" type="image/png" href="assets/logo.png">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -15,7 +17,7 @@
 <nav>
     <div class="logo">
         <a href="index.html">
-            <img src="assets/logo.png" alt="Go to homepage" class="nav-icon">
+            <img src="assets/logo.png" alt="Alex Pannell home" class="nav-icon">
         </a>
     </div>
     <ul>
@@ -36,33 +38,26 @@
 </nav>
 
 <main>
-    <div class="container">
-        <div class="contact-wrapper split">
-            <div class="contact-left">
-                <h1 class="section-title" id="p-title">project name</h1>
-                <h2 id="p-subtitle" class="project-subtitle">Subtitle</h2>
+    <section class="hero">
+        <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="margin-bottom: 1rem;">
+            <circle cx="36" cy="36" r="34" stroke="var(--border-color)" stroke-width="2"/>
+            <path d="M24 30 L30 24 M30 30 L24 24" stroke="var(--text-color)" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M42 30 L48 24 M48 30 L42 24" stroke="var(--text-color)" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M24 48 Q36 40 48 48" stroke="var(--text-color)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        </svg>
 
-                <p id="p-description" class="text-body">
-                    put description here
-                </p>
+        <h1>404</h1>
+        <p class="subtitle">Page Not Found</p>
 
-                <div class="glass-card" style="padding: 1rem; margin-bottom: 2rem;">
-                    <p style="margin-bottom: 0.5rem;"><strong>Role:</strong> <span id="p-role" class="text-muted"></span></p>
-                    <p><strong>Grade:</strong> <span id="p-grade" class="text-muted"></span></p>
-                </div>
+        <p class="hero-description">
+            The page you're looking for doesn't exist, or the link may be out of date.
+        </p>
 
-                <div class="hero-buttons">
-                    <a id="p-link" href="#" class="btn">View Source / Play</a>
-                    <a href="projects.html" class="btn btn-secondary">
-                        <i class="fas fa-arrow-left" aria-hidden="true" style="margin-right: 8px;"></i> Back to Projects
-                    </a>
-                </div>
-            </div>
-
-            <div class="contact-right" id="media-container">
-            </div>
+        <div class="hero-buttons">
+            <a href="index.html" class="btn">Back to Home</a>
+            <a href="projects.html" class="btn">View Projects</a>
         </div>
-    </div>
+    </section>
 </main>
 
 <footer class="site-footer">
@@ -78,6 +73,6 @@
 </footer>
 
 <script type="module" src="js/delaunay.js"></script>
-<script type="module" src="js/projectDisplay.js"></script>
+
 </body>
 </html>
