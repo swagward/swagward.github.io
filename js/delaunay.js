@@ -13,10 +13,16 @@ const pauseBtn = document.getElementById("pause-toggle");
 const pauseIcon = pauseBtn?.querySelector("i");
 let isPaused = localStorage.getItem("bg-paused") === "true"; //want effect on by default
 
+const bgToggleBtn = document.getElementById("bg-toggle");
+const bgToggleIcon = bgToggleBtn?.querySelector("i");
+let isEnabled = localStorage.getItem("bg-enabled") !== "false"; //want effect on by default
+
 const savedTheme = localStorage.getItem("theme") || "dark";
 document.documentElement.setAttribute("data-theme", savedTheme);
 updateThemeIcon(savedTheme);
 updatePauseIcon();
+updateBgToggleIcon();
+canvas.style.display = isEnabled ? "block" : "none";
 
 themeBtn?.addEventListener("click", () =>
 {
@@ -27,7 +33,7 @@ themeBtn?.addEventListener("click", () =>
     localStorage.setItem("theme", newTheme);
     updateThemeIcon(newTheme);
 
-    if(isPaused)
+    if(isEnabled && isPaused)
         draw();
 });
 
@@ -36,7 +42,24 @@ pauseBtn?.addEventListener("click", () => {
     localStorage.setItem("bg-paused", isPaused);
 
     updatePauseIcon();
-    if(!isPaused) updateAndDraw();
+    if(isEnabled && !isPaused) updateAndDraw();
+});
+
+bgToggleBtn?.addEventListener("click", () =>
+{
+    isEnabled = !isEnabled;
+    localStorage.setItem("bg-enabled", isEnabled);
+    updateBgToggleIcon();
+
+    canvas.style.display = isEnabled ? "block" : "none";
+
+    if(isEnabled)
+    {
+        if(isPaused)
+            draw();
+        else
+            updateAndDraw();
+    }
 });
 
 function updateThemeIcon(theme)
@@ -49,6 +72,15 @@ function updatePauseIcon()
 {
     if(!pauseIcon) return;
     pauseIcon.className = isPaused ? "fas fa-play" : "fas fa-pause";
+}
+
+function updateBgToggleIcon()
+{
+    if(!bgToggleIcon) return;
+    bgToggleIcon.className = isEnabled ? "fas fa-eye" : "fas fa-eye-slash";
+
+    if(bgToggleBtn)
+        bgToggleBtn.setAttribute("aria-label", isEnabled ? "Disable background animation" : "Enable background animation");
 }
 
 function getRGBValue()
@@ -73,7 +105,7 @@ window.addEventListener("resize", () =>
     width = canvas.width = newWidth;
     height = canvas.height = newHeight;
 
-    if(isPaused)
+    if(isEnabled && isPaused)
         draw();
 });
 
@@ -176,7 +208,7 @@ function draw()
 
 function updateAndDraw()
 {
-    if(isPaused) return;
+    if(!isEnabled || isPaused) return;
 
     particles.forEach(p =>
     {
@@ -192,7 +224,10 @@ function updateAndDraw()
     requestAnimationFrame(updateAndDraw);
 }
 
-if(isPaused)
-    draw();
-else
-    updateAndDraw();
+if(isEnabled)
+{
+    if(isPaused)
+        draw();
+    else
+        updateAndDraw();
+}

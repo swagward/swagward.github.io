@@ -75,7 +75,7 @@ a
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -1; /* appear behind everything else */
+    z-index: -1;
 }
 
 nav
@@ -514,6 +514,18 @@ input:focus, textarea:focus
     border: 1px solid var(--border-color);
     color: var(--text-color);
     font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+    text-align: left;
+    width: 100%;
+}
+
+.contact-intro
+{
+    color: var(--card-text);
+    margin-bottom: 2rem;
+    line-height: 1.6;
 }
 
 .social-btn i
