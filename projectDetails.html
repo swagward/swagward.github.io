@@ -40,7 +40,7 @@
 
 <main>
     <div class="container">
-        <div class="contact-wrapper split">
+        <div class="contact-wrapper split project-detail-wrapper">
             <div class="contact-left">
                 <h1 class="section-title" id="p-title">project name</h1>
                 <h2 id="p-subtitle" class="project-subtitle">Subtitle</h2>
@@ -49,9 +49,18 @@
                     put description here
                 </p>
 
-                <div class="glass-card" style="padding: 1rem; margin-bottom: 2rem;">
-                    <p style="margin-bottom: 0.5rem;"><strong>Role:</strong> <span id="p-role" class="text-muted"></span></p>
-                    <p><strong>Grade:</strong> <span id="p-grade" class="text-muted"></span></p>
+                <button id="details-toggle" class="btn btn-secondary details-toggle" type="button" aria-expanded="false" aria-controls="details-panel">
+                    <span class="details-toggle-label">Show More</span>
+                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </button>
+
+                <div id="details-panel" class="details-panel" hidden>
+                    <p><strong>Role:</strong> <span id="p-role" class="text-muted"></span></p>
+
+                    <div id="highlights-section" style="display: none;">
+                        <h3>Key Systems</h3>
+                        <ul id="p-highlights" class="text-body"></ul>
+                    </div>
                 </div>
 
                 <div class="hero-buttons">

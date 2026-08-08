@@ -220,6 +220,43 @@ nav .logo a:hover .nav-icon
     color: var(--bg-color);
 }
 
+.details-toggle
+{
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 0 0 1.5rem;
+    padding: 0.6rem 1.2rem;
+}
+
+.details-toggle i
+{
+    transition: transform 0.2s ease;
+}
+
+.details-toggle[aria-expanded="true"] i
+{
+    transform: rotate(180deg);
+}
+
+.details-panel
+{
+    margin-bottom: 1.5rem;
+}
+
+.details-panel h3
+{
+    margin: 1.5rem 0 0.5rem;
+    font-size: 1.1rem;
+}
+
+.details-panel ul
+{
+    padding-left: 1.2rem;
+    color: var(--card-text);
+    line-height: 1.8;
+}
+
 .nav-controls
 {
     display: flex;
@@ -339,6 +376,14 @@ nav .logo a:hover .nav-icon
     padding: 3px 8px;
     border-radius: 4px;
     color: var(--accent);
+}
+
+.see-details-btn
+{
+    display: block;
+    text-align: center;
+    margin: 1.5rem 0 0;
+    padding: 0.6rem 1.5rem;
 }
 
 .gallery-container
@@ -495,6 +540,11 @@ input:focus, textarea:focus
     gap: 4rem;
     padding: 3rem;
     align-items: center;
+}
+
+.project-detail-wrapper
+{
+    align-items: start;
 }
 
 .social-links

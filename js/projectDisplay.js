@@ -21,7 +21,26 @@ if (project)
     document.getElementById('p-subtitle').innerText = project.subtitle;
     document.getElementById('p-description').innerText = project.description;
     document.getElementById('p-role').innerText = project.role;
-    document.getElementById('p-grade').innerText = project.grade;
+
+    if (project.highlights && project.highlights.length > 0)
+    {
+        const highlightsSection = document.getElementById('highlights-section');
+        const highlightsList = document.getElementById('p-highlights');
+        highlightsList.innerHTML = project.highlights.map(item => `<li>${item}</li>`).join('');
+        highlightsSection.style.display = '';
+    }
+
+    const detailsToggle = document.getElementById('details-toggle');
+    const detailsPanel = document.getElementById('details-panel');
+    const detailsToggleLabel = detailsToggle.querySelector('.details-toggle-label');
+
+    detailsToggle.addEventListener('click', () =>
+    {
+        const isExpanded = detailsToggle.getAttribute('aria-expanded') === 'true';
+        detailsToggle.setAttribute('aria-expanded', String(!isExpanded));
+        detailsPanel.hidden = isExpanded;
+        detailsToggleLabel.innerText = isExpanded ? 'Show More' : 'Show Less';
+    });
 
     const sourceLink = document.getElementById('p-link');
     sourceLink.href = project.website;
