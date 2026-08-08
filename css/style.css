@@ -75,7 +75,7 @@ a
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -1;
+    z-index: -1; /* appear behind everything else */
 }
 
 nav
@@ -110,7 +110,6 @@ nav a:hover
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
 }
 
-
 .hero
 {
     min-height: 20vh;
@@ -142,6 +141,7 @@ nav a:hover
     justify-content: center;
     align-items: center;
     width: 100%;
+    aspect-ratio: 5/6;
     max-height: 550px;
     margin: 10px;
     overflow: hidden;
@@ -151,9 +151,9 @@ nav a:hover
 
 .about-photo
 {
-    width: 110%;
-    aspect-ratio: 5/6;
-    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     object-position: center;
     display: block;
 }
@@ -218,43 +218,6 @@ nav .logo a:hover .nav-icon
 {
     border-color: var(--accent);
     color: var(--bg-color);
-}
-
-.details-toggle
-{
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    margin: 0 0 1.5rem;
-    padding: 0.6rem 1.2rem;
-}
-
-.details-toggle i
-{
-    transition: transform 0.2s ease;
-}
-
-.details-toggle[aria-expanded="true"] i
-{
-    transform: rotate(180deg);
-}
-
-.details-panel
-{
-    margin-bottom: 1.5rem;
-}
-
-.details-panel h3
-{
-    margin: 1.5rem 0 0.5rem;
-    font-size: 1.1rem;
-}
-
-.details-panel ul
-{
-    padding-left: 1.2rem;
-    color: var(--card-text);
-    line-height: 1.8;
 }
 
 .nav-controls
@@ -378,13 +341,6 @@ nav .logo a:hover .nav-icon
     color: var(--accent);
 }
 
-.see-details-btn
-{
-    display: block;
-    text-align: center;
-    margin: 1.5rem 0 0;
-    padding: 0.6rem 1.5rem;
-}
 
 .gallery-container
 {
@@ -542,11 +498,6 @@ input:focus, textarea:focus
     align-items: center;
 }
 
-.project-detail-wrapper
-{
-    align-items: start;
-}
-
 .social-links
 {
     display: flex;
@@ -661,3 +612,27 @@ input:focus, textarea:focus
 .footer-links a:hover { color: var(--accent); }
 
 .footer-copyright { color: var(--card-text); font-size: 0.8rem; margin: 0; }
+
+@media (max-width: 640px)
+{
+    nav
+    {
+        flex-wrap: wrap;
+        justify-content: center;
+        row-gap: 0.75rem;
+        padding: 1rem 1.25rem;
+    }
+
+    nav ul
+    {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 0.75rem 1.25rem;
+    }
+
+    .hero h1
+    {
+        font-size: 2.5rem;
+    }
+}

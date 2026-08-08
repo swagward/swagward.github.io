@@ -11,11 +11,11 @@ const themeIcon = themeBtn?.querySelector("i");
 
 const pauseBtn = document.getElementById("pause-toggle");
 const pauseIcon = pauseBtn?.querySelector("i");
-let isPaused = localStorage.getItem("bg-paused") === "true"; //want effect on by default
+let isPaused = localStorage.getItem("bg-paused") === "true";
 
 const bgToggleBtn = document.getElementById("bg-toggle");
 const bgToggleIcon = bgToggleBtn?.querySelector("i");
-let isEnabled = localStorage.getItem("bg-enabled") !== "false"; //want effect on by default
+let isEnabled = localStorage.getItem("bg-enabled") !== "false";
 
 const savedTheme = localStorage.getItem("theme") || "dark";
 document.documentElement.setAttribute("data-theme", savedTheme);
@@ -42,7 +42,8 @@ pauseBtn?.addEventListener("click", () => {
     localStorage.setItem("bg-paused", isPaused);
 
     updatePauseIcon();
-    if(isEnabled && !isPaused) updateAndDraw();
+    if(isEnabled && !isPaused)
+        updateAndDraw();
 });
 
 bgToggleBtn?.addEventListener("click", () =>
@@ -105,12 +106,13 @@ window.addEventListener("resize", () =>
     width = canvas.width = newWidth;
     height = canvas.height = newHeight;
 
+    adjustParticleCount();
+
     if(isEnabled && isPaused)
         draw();
 });
 
 let particles = [];
-const PARTICLE_COUNT = 60;
 const MAX_DIST = 150;
 
 function rand(min, max)
@@ -118,21 +120,42 @@ function rand(min, max)
     return Math.random() * (max - min) + min;
 }
 
+function getParticleCount()
+{
+    const area = width * height;
+    return Math.max(25, Math.min(60, Math.round(area / 9000)));
+}
+
+function makeParticle()
+{
+    return {
+        x: rand(0, width),
+        y: rand(0, height),
+        vx: rand(-0.3, 0.3),
+        vy: rand(-0.3, 0.3),
+        phase: rand(0, Math.PI * 2)
+    };
+}
+
 function initParticles()
 {
     particles = [];
-    for (let i = 0; i < PARTICLE_COUNT; i++)
-    {
-        particles.push({
-            x: rand(0, width),
-            y: rand(0, height),
-            vx: rand(-0.3, 0.3),
-            vy: rand(-0.3, 0.3),
-            phase: rand(0, Math.PI * 2)
-        });
-    }
+    const count = getParticleCount();
+    for (let i = 0; i < count; i++)
+        particles.push(makeParticle());
 }
 initParticles();
+
+function adjustParticleCount()
+{
+    const target = getParticleCount();
+
+    if (particles.length > target)
+        particles.length = target;
+    else
+        while (particles.length < target)
+            particles.push(makeParticle());
+}
 
 function draw()
 {
