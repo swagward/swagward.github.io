@@ -13,15 +13,14 @@ const cardsHTML = Object.entries(projects).map(([id, project]) =>
     const tags = (project.tags ?? []).map(tag => `<span class="tag">${tag}</span>`).join('');
 
     return `
-        <div class="card">
+        <a href="projectDetails.html?id=${id}" class="card">
             ${thumbnail}
             <div class="card-content">
                 <h2>${project.title}</h2>
                 <p>${project.summary ?? project.description}</p>
                 <div class="tags">${tags}</div>
-                <a href="projectDetails.html?id=${id}" class="btn see-details-btn">See Details</a>
             </div>
-        </div>
+        </a>
     `;
 }).join('');
 
