@@ -683,26 +683,15 @@ input:focus, textarea:focus
     margin: 0;
 }
 
-.remembrance-wrapper
+.visually-hidden
 {
-    display: flex;
-    align-items: center;
-    gap: 4rem;
-}
-
-.remembrance-photo
-{
-    max-width: 400px;
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-}
-
-@media (max-width: 768px)
-{
-    .remembrance-wrapper
-    {
-        flex-direction: column;
-        gap: 2rem;
-    }
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }

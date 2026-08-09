@@ -4,32 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alex Pannell | Graduate Software Developer</title>
+    <meta name="description" content="Portfolio of Alex Pannell, a graduate software developer focused on real-time systems, networking, and procedural generation.">
+    <link rel="canonical" href="https://swagward.github.io/">
+    <meta property="og:title" content="Alex Pannell | Graduate Software Developer">
+    <meta property="og:description" content="Graduate software developer building performant, maintainable systems, real-time applications, networking, procedural generation.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://swagward.github.io/">
+    <meta property="og:image" content="https://swagward.github.io/assets/logo2x.png">
+    <meta name="twitter:card" content="summary">
     <link rel="icon" type="image/png" href="assets/logo.png">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Alex Pannell",
+            "url": "https://swagward.github.io/",
+            "jobTitle": "Graduate Software Developer",
+            "sameAs": [
+                "https://github.com/swagward",
+                "https://www.youtube.com/@swagward",
+                "https://www.instagram.com/realswagward/"
+            ]
+        }
+    </script>
 </head>
 <body>
-<main>
 
-<canvas id="bg"></canvas>
+<canvas id="bg" aria-hidden="true"></canvas>
 
-<nav style="border: none; background: transparent;">
-    <div class="logo"></div> <ul>
-    <li>
-        <div class="nav-controls">
-            <button id="bg-toggle" class="theme-btn" aria-label="Disable background animation">
-                <i class="fas fa-eye" aria-hidden="true"></i>
-            </button>
-            <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
-                <i class="fas fa-moon"></i>
-            </button>
-            <button id="pause-toggle" class="theme-btn" aria-label="Pause Background">
-                <i class="fas fa-pause"></i>
-            </button>
-        </div>
-    </li>
-</ul>
+<nav>
+    <div class="logo">
+        <a href="index.html">
+            <img src="assets/logo.png" alt="Go to homepage" class="nav-icon">
+        </a>
+    </div>
+    <ul>
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li>
+            <div class="nav-controls">
+                <button id="bg-toggle" class="theme-btn" aria-label="Disable background animation">
+                    <i class="fas fa-eye" aria-hidden="true"></i>
+                </button>
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                </button>
+                <button id="pause-toggle" class="theme-btn" aria-label="Pause background animation">
+                    <i class="fas fa-pause" aria-hidden="true"></i>
+                </button>
+            </div>
+        </li>
+    </ul>
 </nav>
+
+<main>
     <section class="hero">
         <img src="assets/logo2x.png" alt="Go to homepage" class="hero-logo">
 
@@ -46,22 +77,29 @@
         </div>
     </section>
 
-<div id="about" class="container" style="margin-bottom: 1rem;">
-    <div class="contact-wrapper split">
+    <div id="about" class="container" style="margin-bottom: 1rem;">
+        <div class="contact-wrapper split">
 
-        <div class="contact-left">
-            <h2 class="section-title">About Me</h2>
-            <p class="text-body">
-                Rewriting right now.
-            </p>
+            <div class="contact-left">
+                <h2 class="section-title">About Me</h2>
+                <p class="text-body">
+                    I'm a First-Class Digital Games Development graduate from the University of Brighton, focused on software development and gameplay programming. I like understanding systems from the ground up, building my own architecture instead of reaching for an existing framework.
+                </p>
+                <p class="text-body">
+                    Most of my work is in C++, C#, Java, and JavaScript, across Unity, Unreal Engine 5, and a few projects built entirely from scratch, including a peer-to-peer framework and a custom client-server sandbox game.
+                </p>
+                <p class="text-body">
+                    Feel free to take a look around!
+                </p>
+            </div>
+
+            <div class="contact-right about-image-container">
+                <img src="assets/me.png" alt="Me on my graduation day" class="about-photo">
+            </div>
+
         </div>
-
-        <div class="contact-right about-image-container">
-            <img src="assets/me.png" alt="Me on my graduation day" class="about-photo">
-        </div>
-
     </div>
-</div>
+</main>
 
 <footer class="site-footer">
     <div class="footer-links">
@@ -77,7 +115,5 @@
 
 <script type="module" src="js/delaunay.js"></script>
 
-
-</main>
 </body>
 </html>

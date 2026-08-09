@@ -3,14 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crystal Defenders | Swagward</title>
+    <title>Crystal Defenders | Alex Pannell</title>
+    <meta name="description" content="Play Crystal Defenders, a browser-based top-down survival shooter built with JavaScript and Phaser, by Alex Pannell.">
+    <link rel="canonical" href="https://swagward.github.io/game.html">
+    <meta property="og:title" content="Crystal Defenders | Alex Pannell">
+    <meta property="og:description" content="Play Crystal Defenders, a browser-based top-down survival shooter built with JavaScript and Phaser.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://swagward.github.io/game.html">
+    <meta name="twitter:card" content="summary">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/game.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="game-page">
 
-<canvas id="bg"></canvas>
+<canvas id="bg" aria-hidden="true"></canvas>
 
 <nav>
     <div class="logo">
@@ -27,22 +34,24 @@
                 <button id="bg-toggle" class="theme-btn" aria-label="Disable background animation">
                     <i class="fas fa-eye" aria-hidden="true"></i>
                 </button>
-                <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
-                    <i class="fas fa-moon"></i>
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
                 </button>
-                <button id="pause-toggle" class="theme-btn" aria-label="Pause Background">
-                    <i class="fas fa-pause"></i>
+                <button id="pause-toggle" class="theme-btn" aria-label="Pause background animation">
+                    <i class="fas fa-pause" aria-hidden="true"></i>
                 </button>
             </div>
         </li>
     </ul>
 </nav>
 
+<h1 class="visually-hidden">Crystal Defenders — play in browser</h1>
+
 <main class="game-wrapper">
     <div id="game-container"></div>
 
     <aside id="sidebar" class="glass-card">
-        <button id="toggle-sidebar" class="icon-btn"><i class="fas fa-info-circle"></i></button>
+        <button id="toggle-sidebar" class="icon-btn" aria-label="Toggle controls panel"><i class="fas fa-info-circle" aria-hidden="true"></i></button>
 
         <div class="sidebar-content">
             <h3>Movement</h3>
@@ -68,7 +77,7 @@
             <p>Defend the crystal from the zombie horde. Rounds scale in difficulty, so keep an eye on your ammo.</p>
 
             <div class="status-msg">
-                <i class="fas fa-terminal"></i> Check console for debug logs.
+                <i class="fas fa-terminal" aria-hidden="true"></i> Check console for debug logs.
             </div>
         </div>
     </aside>
