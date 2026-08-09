@@ -55,7 +55,7 @@ export const projects =
                                      "Enemy movement runs on a timer, with each location holding a fixed set of valid points the enemy could move to next, rather than free-roaming pathfinding, to keep the enemy seamlessly wandering around instead of teleporting between distant points.",
                                      "Built a night cycle where the enemy scales in difficulty each night, though only 2 nights made it to the demo release however the underlying system supports up to 5 nights."],
                         tags: ["Unity", "C#", "Horror"],
-                        images: ["assets/fnan/fnan1.gif", "assets/fnan/fnan2.png", "assets/fnan/fnan3.png"],
+                        images: ["assets/fnan/fnan2.png", "assets/fnan/fnan1.gif", "assets/fnan/fnan3.png"],
                         website: "https://naughty-corner-games.itch.io/five-nights-at-naughtys",
                         video: "https://www.youtube.com/embed/R-ZTeeAXC9o"
                 },
@@ -71,7 +71,7 @@ export const projects =
                                      "Chunk based world streaming plus frustum culling reached up to 4,000 frames per second during testing on a 65,000 tile world, deliberately stress-testing the application to see the 'worst case' scenarios.",
                                      "Uses client-side prediction with server reconciliation over TCP: the client moves immediately for player responsiveness, then smoothly interpolates to the server's authoritative position if theres ever a disagreement."],
                         tags: ["C++", "Java", "SDL2", "Networking"],
-                        images: [],
+                        images: ["assets/swagaria/swagariaMultiplayer.png"],
                         website: "https://github.com/swagward/SwagariaMultiplayer",
                         video: "https://www.youtube.com/embed/ezAafmcUHzs"
                 },
@@ -87,7 +87,7 @@ export const projects =
                                  "Tile state changes sync via SyncVar hooks, rather than constant transform updates, keeping bandwidth low even with an arena of thousands of platform tiles.",
                                  "Ran several play-tests with real users throughout the course of development, taking in feedback and adjusting variables, adding suggests and fixing bugs found by players."],
                     tags: ["C#", "Unity", "Steamworks", "Mirror"],
-                    images: [],
+                    images: ["assets/partyplaygrounds/thumbnail.png"],
                     website: "https://github.com/swagward/PartyPlaygrounds",
                     video: "https://www.youtube.com/embed/tR7tKOqgvTU"
                 }
